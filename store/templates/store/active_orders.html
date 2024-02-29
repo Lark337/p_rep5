@@ -1,0 +1,26 @@
+{% extends 'store/main.html'%}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated and user.is_staff%}
+<div class="col-lg-8">
+    <table>
+        <tr>
+            <th>Пользователь</th>
+            <th>Имя</th>
+            <th>Заказ</th>
+            <th>Адрес</th>
+            <th>Дата добавления</th>
+            {% for i in shippingAddress %}
+        <tr>
+            <td>{{ i.customer.user }}</td>
+            <td>{{ i.customer.name }}</td>
+            <td>{{ i.phoneNumber }}</td>
+            <td>{{ i.address }}</td>
+            <td>{{ i.date_added }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{%endif%}
+{% endblock content %}
+
